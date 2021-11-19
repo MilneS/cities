@@ -12,6 +12,20 @@ code {
     monospace;
 }
 
-.fd{
-background-color: rgb(177, 238, 217);
+.map-container {
+  height: 100%;
+  width:100%;
+}
+.popup > :nth-of-type(2) {
+  padding: 10px;
+}
+.popup {
+  color: rgb(41, 61, 248);
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+}
+
+.hjk{
+  
 }
