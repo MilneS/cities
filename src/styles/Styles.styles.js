@@ -4,11 +4,13 @@ export const Container = styled.div`
   color: rgb(27, 27, 27);
   background-color: ${(props) => props.bgColor};
   display: flex;
+  flex-direction: ${(props) => (props.direction ? props.direction : "column")};
   align-items: ${(props) => (props.align ? props.align : "center")};
   justify-content: ${(props) => (props.justify ? props.justify : "center")};
   font-family: Avenir Next;
   height: ${(props) => props.height};
   margin: ${(props) => (props.margin ? props.margin : "0px")};
+  font-weight: 500;
 `;
 
 export const Title = styled.h1`
@@ -18,6 +20,19 @@ export const Title = styled.h1`
 `;
 
 export const Text = styled.p`
-  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "0px")};
-  font-size: ${(props) => (props.fontSize ? props.fontSize : "18px")};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "20px")};
 `;
+
+export const Select= styled.select`
+font-size: 18px;
+color: rgb(27, 27, 27);
+font-family: Avenir Next;
+margin-left:10px;
+font-weight: 500;
+border:3px solid rgb(194, 192, 192);
+border-radius: 3px;
+padding-left: 5px;
+padding-right: 5px;
+outline: none;
+`
+

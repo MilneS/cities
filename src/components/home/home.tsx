@@ -1,5 +1,5 @@
-import { Container, Title, Text } from "../../styles/Styles.styles";
-import '../../index.css'
+import { Container, Title, Text, Select } from "../../styles/Styles.styles";
+import "../../index.css";
 import { cities } from "../../assets/cities";
 import { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
@@ -8,10 +8,9 @@ const Home = () => {
   const mapAPI: string = process.env.REACT_APP_MAP_API!;
   mapboxgl.accessToken = mapAPI;
   const mapContainer = useRef(null);
-  let lng: number=-97.92977429999999
-  let lat: number=38.0608445;
+  let lng: number = -97.92977429999999;
+  let lat: number = 38.0608445;
   const zoom: number = 4;
-  
 
   const createMap = () => {
     const map = new mapboxgl.Map({
@@ -37,7 +36,7 @@ const Home = () => {
       .setLngLat(lngLat)
       .setPopup(
         new mapboxgl.Popup({
-          className: 'popup',
+          className: "popup",
           offset: 25,
           closeButton: false,
           maxWidth: "fit-content",
@@ -47,32 +46,42 @@ const Home = () => {
     return mapMarker;
   };
 
-  useEffect(() => {
-    const map = createMap();
+  // useEffect(() => {
+  //   const map = createMap();
 
-    cities.map((item) => {
-      if (item.longitude && item.latitude) {        
-         createMarker(
-              [item.longitude, item.latitude],
-              "rgb(115, 127, 233)",
-              0.8,
-              item.city,
-              map
-            );}
-        return item;
-    });
-  }, []);
+  //   cities.map((item) => {
+  //     if (item.longitude && item.latitude) {
+  //       createMarker(
+  //         [item.longitude, item.latitude],
+  //         "rgb(115, 127, 233)",
+  //         0.8,
+  //         item.city,
+  //         map
+  //       );
+  //     }
+  //     return item;
+  //   });
+  // }, []);
 
   return (
     <>
-      <Container height="80px" align="flex-end" >
+      <Container height="80px" align="center">
         <Title>U.S. cities</Title>
       </Container>
       <Container height="450px">
-        <div ref={mapContainer} className="map-container" />{" "}
+        {/* <div ref={mapContainer} className="map-container" /> */}
       </Container>
-      <Container justify="flex-start">
-        <Text marginLeft="200px">Info</Text>
+      <Container justify="flex-start" align="flex-start" margin="20px 200px">
+        <Container direction="row">
+          <Text>Filter by population: </Text>
+          <Select>
+            <option value="20000">Under 50000</option>
+            <option value="80000">50000 - 100000</option>
+            <option value="150000">100000 - 150000</option>
+            <option value="150000">above 150000</option>
+          </Select>
+        </Container>
+        <Text>Info</Text>
       </Container>
     </>
   );
