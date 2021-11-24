@@ -7,10 +7,13 @@ import {
 } from "../../styles/Styles.styles";
 import "../../index.css";
 import { cities } from "../../assets/cities";
-import { useState, useRef, useEffect, OptionHTMLAttributes } from "react";
+import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
 const Home = () => {
+  const [cityInfo, setCityInfo] = useState<any>({});
+  const [cityClicked, setCityClicked] = useState<boolean>(false);
+
   const mapAPI: string = process.env.REACT_APP_MAP_API!;
   mapboxgl.accessToken = mapAPI;
   const mapContainer = useRef(null);
@@ -32,7 +35,8 @@ const Home = () => {
     lngLat: [number, number],
     color: string,
     scale: number,
-    target: string,
+    city: string,
+    item: any,
     map: mapboxgl.Map
   ) => {
     const mapMarker = new mapboxgl.Marker({
@@ -46,9 +50,13 @@ const Home = () => {
           offset: 25,
           closeButton: false,
           maxWidth: "fit-content",
-        }).setHTML(`<div>${target}</div>`)
+        }).setHTML(`<div>${city}</div>`)
       )
       .addTo(map);
+    mapMarker.getElement().addEventListener("click", () => {
+      setCityClicked(true);
+      setCityInfo(item);
+    });
     return mapMarker;
   };
 
@@ -74,6 +82,7 @@ const Home = () => {
           "rgb(115, 127, 233)",
           0.8,
           item.city,
+          item,
           map
         );
       }
@@ -102,7 +111,14 @@ const Home = () => {
             <option value="150001">Above 150000</option>
           </Select>
         </Container>
-        <Text>Info</Text>
+        {cityClicked && (
+          <Text>
+            In 2013, {cityInfo.city}, {cityInfo.state} counted{" "}
+            {cityInfo.population} inhabitants. <br />
+            From 2000 to 2013, the population grew by{" "}
+            {cityInfo.growth_from_2000_to_2013}
+          </Text>
+        )}
       </Container>
     </>
   );

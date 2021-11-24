@@ -24,6 +24,7 @@ font-size: 20px;
 
 export const Text = styled.p`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "20px")};
+  line-height: 50px
 `;
 
 export const Select = styled.select`
