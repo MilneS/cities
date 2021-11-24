@@ -1,7 +1,13 @@
-import { Container, Title, Text, Select, Label } from "../../styles/Styles.styles";
+import {
+  Container,
+  Title,
+  Text,
+  Select,
+  Label,
+} from "../../styles/Styles.styles";
 import "../../index.css";
 import { cities } from "../../assets/cities";
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect, OptionHTMLAttributes } from "react";
 import mapboxgl from "mapbox-gl";
 
 const Home = () => {
@@ -46,30 +52,34 @@ const Home = () => {
     return mapMarker;
   };
 
-  const getValue=(e: React.MouseEvent)=>{
-    const g:any=e.target
-console.log(g.value);
+  const [minValue, setMinValue] = useState<string>("0");
+  const [maxValue, setMaxValue] = useState<number>(0);
+  const getValue = (e: React.MouseEvent<HTMLOptionElement>) => {
+    setMinValue(e.currentTarget.value);
+    e.currentTarget.value === "1" && setMaxValue(50000);
+    e.currentTarget.value === "50000" && setMaxValue(100000);
+    e.currentTarget.value === "100000" && setMaxValue(150000);
+    e.currentTarget.value === "150001" && setMaxValue(300000);
+  };
 
-  }
   useEffect(() => {
-
-
-
-    // const map = createMap();
-
-    // cities.map((item) => {
-    //   if (item.longitude && item.latitude) {
-    //     createMarker(
-    //       [item.longitude, item.latitude],
-    //       "rgb(115, 127, 233)",
-    //       0.8,
-    //       item.city,
-    //       map
-    //     );
-    //   }
-    //   return item;
-    // });
-  }, []);
+    const map = createMap();
+    cities.map((item) => {
+      if (
+        Number(item.population) > Number(minValue) &&
+        Number(item.population) < maxValue
+      ) {
+        createMarker(
+          [item.longitude, item.latitude],
+          "rgb(115, 127, 233)",
+          0.8,
+          item.city,
+          map
+        );
+      }
+      return item;
+    });
+  }, [minValue]);
 
   return (
     <>
@@ -77,16 +87,18 @@ console.log(g.value);
         <Title>U.S. cities</Title>
       </Container>
       <Container height="450px">
-        {/* <div ref={mapContainer} className="map-container" /> */}
+        <div ref={mapContainer} className="map-container" />
       </Container>
       <Container justify="flex-start" align="flex-start" margin="20px 200px">
         <Container direction="row">
           <Label htmlFor="citiesSelect">Filter by population:</Label>
           <Select id="citiesSelect" defaultValue="" onChange={getValue}>
-            <option value="" disabled hidden>Select</option>
-            <option value="0">Under 50000</option>
-            <option value="100000">50000 - 100000</option>
-            <option value="150000">100000 - 150000</option>
+            <option value="" disabled hidden>
+              Select
+            </option>
+            <option value="1">Under 50000</option>
+            <option value="50000">50000 - 100000</option>
+            <option value="100000">100000 - 150000</option>
             <option value="150001">Above 150000</option>
           </Select>
         </Container>

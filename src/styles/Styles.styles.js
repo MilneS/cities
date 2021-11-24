@@ -20,7 +20,6 @@ export const Title = styled.h1`
 `;
 export const Label = styled.label`
 font-size: 20px;
-
 `;
 
 export const Text = styled.p`
