@@ -16,14 +16,10 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: ${(props) => (props.fontSize ? props.fontSize : "24px")};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "25px")};
   color: rgb(95, 105, 196);
   font-weight: bold;
-  margin-bottom: 0px
-`;
-
-export const Label = styled.label`
-  font-size: 20px;
+  margin-top: ${(props) => (props.marginTop ? props.marginTop : "0px")};
 `;
 
 export const Text = styled.p`
@@ -37,8 +33,12 @@ export const Text = styled.p`
   width: ${(props) => (props.width? props.width : 'fit-content')};
 `;
 
+export const Label = styled.label`
+  font-size: 20px;
+`;
+
 export const Select = styled.select`
-  font-size: 18px;
+  font-size: 20px;
   color: rgb(27, 27, 27);
   font-family: Avenir Next;
   margin-left: 10px;

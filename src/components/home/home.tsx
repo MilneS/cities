@@ -9,9 +9,28 @@ import "../../index.css";
 import { cities } from "../../assets/cities";
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
+import { Interface } from "readline";
 
 const Home = () => {
-  const [cityInfo, setCityInfo] = useState<any>({});
+  interface CityItem {
+    city: string;
+    growth_from_2000_to_2013: string;
+    latitude: number;
+    longitude: number;
+    population: string;
+    rank: string;
+    state: string;
+  }
+  const cityItem={
+    city: "",
+    growth_from_2000_to_2013: "",
+    latitude: 0,
+    longitude: 0,
+    population: '',
+    rank: '',
+    state: '',
+  }
+  const [cityInfo, setCityInfo] = useState<CityItem>(cityItem);
   const [cityClicked, setCityClicked] = useState<boolean>(false);
 
   const mapAPI: string = process.env.REACT_APP_MAP_API!;
@@ -19,7 +38,7 @@ const Home = () => {
   const mapContainer = useRef(null);
   let lng: number = -97.92977429999999;
   let lat: number = 38.0608445;
-  const zoom: number = 4;
+  const zoom: number = 3.5;
 
   const createMap = () => {
     const map = new mapboxgl.Map({
@@ -36,7 +55,7 @@ const Home = () => {
     color: string,
     scale: number,
     city: string,
-    item: any,
+    item: CityItem,
     map: mapboxgl.Map
   ) => {
     const mapMarker = new mapboxgl.Marker({
@@ -92,14 +111,14 @@ const Home = () => {
 
   return (
     <>
-      <Container height="60px" align="center">
-        <Title >U.S. cities</Title>
+      <Container height="80px" align="center" justify="flex-end">
+        <Title>U.S. cities</Title>
       </Container>
       <Container height="450px">
         <div ref={mapContainer} className="map-container" />
       </Container>
-      <Container width='100%' position='absolute'>
-        <Text width='98%' fontSize="10px" marginTop="0px" paddingLeft="30px" >
+      <Container width="100%" position="absolute">
+        <Text width="98%" fontSize="12px" marginTop="0px" paddingLeft="30px">
           2013 data
         </Text>
       </Container>
@@ -119,10 +138,10 @@ const Home = () => {
 
         {cityClicked && (
           <Container align="left">
-            <Title color="rgb(27, 27, 27)">
+            <Title color="rgb(27, 27, 27)" marginTop="30px">
               {cityInfo.city}, {cityInfo.state}
             </Title>
-            <Text paddingRight='0px'>
+            <Text paddingRight="0px" marginTop="0px">
               Population: {cityInfo.population} inhabitants
               <br />
               Growth/3 yrs: {cityInfo.growth_from_2000_to_2013}
