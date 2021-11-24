@@ -18,21 +18,24 @@ export const Title = styled.h1`
   color: rgb(95, 105, 196);
   font-weight: bold;
 `;
+export const Label = styled.label`
+font-size: 20px;
+
+`;
 
 export const Text = styled.p`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "20px")};
 `;
 
-export const Select= styled.select`
-font-size: 18px;
-color: rgb(27, 27, 27);
-font-family: Avenir Next;
-margin-left:10px;
-font-weight: 500;
-border:3px solid rgb(194, 192, 192);
-border-radius: 3px;
-padding-left: 5px;
-padding-right: 5px;
-outline: none;
-`
-
+export const Select = styled.select`
+  font-size: 18px;
+  color: rgb(27, 27, 27);
+  font-family: Avenir Next;
+  margin-left: 10px;
+  font-weight: 500;
+  border: 3px solid rgb(194, 192, 192);
+  border-radius: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  outline: none;
+`;

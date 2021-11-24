@@ -1,4 +1,4 @@
-import { Container, Title, Text, Select } from "../../styles/Styles.styles";
+import { Container, Title, Text, Select, Label } from "../../styles/Styles.styles";
 import "../../index.css";
 import { cities } from "../../assets/cities";
 import { useRef, useEffect } from "react";
@@ -46,22 +46,30 @@ const Home = () => {
     return mapMarker;
   };
 
-  // useEffect(() => {
-  //   const map = createMap();
+  const getValue=(e: React.MouseEvent)=>{
+    const g:any=e.target
+console.log(g.value);
 
-  //   cities.map((item) => {
-  //     if (item.longitude && item.latitude) {
-  //       createMarker(
-  //         [item.longitude, item.latitude],
-  //         "rgb(115, 127, 233)",
-  //         0.8,
-  //         item.city,
-  //         map
-  //       );
-  //     }
-  //     return item;
-  //   });
-  // }, []);
+  }
+  useEffect(() => {
+
+
+
+    // const map = createMap();
+
+    // cities.map((item) => {
+    //   if (item.longitude && item.latitude) {
+    //     createMarker(
+    //       [item.longitude, item.latitude],
+    //       "rgb(115, 127, 233)",
+    //       0.8,
+    //       item.city,
+    //       map
+    //     );
+    //   }
+    //   return item;
+    // });
+  }, []);
 
   return (
     <>
@@ -73,12 +81,13 @@ const Home = () => {
       </Container>
       <Container justify="flex-start" align="flex-start" margin="20px 200px">
         <Container direction="row">
-          <Text>Filter by population: </Text>
-          <Select>
-            <option value="20000">Under 50000</option>
-            <option value="80000">50000 - 100000</option>
+          <Label htmlFor="citiesSelect">Filter by population:</Label>
+          <Select id="citiesSelect" defaultValue="" onChange={getValue}>
+            <option value="" disabled hidden>Select</option>
+            <option value="0">Under 50000</option>
+            <option value="100000">50000 - 100000</option>
             <option value="150000">100000 - 150000</option>
-            <option value="150000">above 150000</option>
+            <option value="150001">Above 150000</option>
           </Select>
         </Container>
         <Text>Info</Text>
