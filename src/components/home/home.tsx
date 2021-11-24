@@ -92,14 +92,19 @@ const Home = () => {
 
   return (
     <>
-      <Container height="80px" align="center">
-        <Title>U.S. cities</Title>
+      <Container height="60px" align="center">
+        <Title >U.S. cities</Title>
       </Container>
       <Container height="450px">
         <div ref={mapContainer} className="map-container" />
       </Container>
+      <Container width='100%' position='absolute'>
+        <Text width='98%' fontSize="10px" marginTop="0px" paddingLeft="30px" >
+          2013 data
+        </Text>
+      </Container>
       <Container justify="flex-start" align="flex-start" margin="20px 200px">
-        <Container direction="row">
+        <Container direction="row" margin="20px 0px">
           <Label htmlFor="citiesSelect">Filter by population:</Label>
           <Select id="citiesSelect" defaultValue="" onChange={getValue}>
             <option value="" disabled hidden>
@@ -111,13 +116,18 @@ const Home = () => {
             <option value="150001">Above 150000</option>
           </Select>
         </Container>
+
         {cityClicked && (
-          <Text>
-            In 2013, {cityInfo.city}, {cityInfo.state} counted{" "}
-            {cityInfo.population} inhabitants. <br />
-            From 2000 to 2013, the population grew by{" "}
-            {cityInfo.growth_from_2000_to_2013}
-          </Text>
+          <Container align="left">
+            <Title color="rgb(27, 27, 27)">
+              {cityInfo.city}, {cityInfo.state}
+            </Title>
+            <Text paddingRight='0px'>
+              Population: {cityInfo.population} inhabitants
+              <br />
+              Growth/3 yrs: {cityInfo.growth_from_2000_to_2013}
+            </Text>
+          </Container>
         )}
       </Container>
     </>

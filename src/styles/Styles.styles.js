@@ -11,20 +11,30 @@ export const Container = styled.div`
   height: ${(props) => props.height};
   margin: ${(props) => (props.margin ? props.margin : "0px")};
   font-weight: 500;
+  width:${(props) => (props.width ? props.width : "")};
+  position: ${(props) => (props.position ? props.position : "static")};
 `;
 
 export const Title = styled.h1`
-  font-size: ${(props) => (props.fontSize ? props.fontSize : "25px")};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "24px")};
   color: rgb(95, 105, 196);
   font-weight: bold;
+  margin-bottom: 0px
 `;
+
 export const Label = styled.label`
-font-size: 20px;
+  font-size: 20px;
 `;
 
 export const Text = styled.p`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "20px")};
-  line-height: 50px
+  line-height: 40px;
+  margin-top:${(props) => (props.marginTop ? props.marginTop : "10px")};
+  padding-right:${(props) => (props.paddingRight ? props.paddingRight : "20px")};
+  display:flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: ${(props) => (props.width? props.width : 'fit-content')};
 `;
 
 export const Select = styled.select`
