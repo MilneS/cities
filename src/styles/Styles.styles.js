@@ -36,7 +36,7 @@ export const Text = styled.p`
   justify-content: flex-end;
   width: ${(props) => (props.width? props.width : 'fit-content')};
   @media(max-width:768px){
-    font-size: 10px;
+    font-size: ${(props) => (props.fontSize? props.fontSize : '10px')};
   }
 `;
 

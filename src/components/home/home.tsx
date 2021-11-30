@@ -141,7 +141,7 @@ const Home = () => {
             <Title color="rgb(27, 27, 27)" marginTop="30px">
               {cityInfo.city}, {cityInfo.state}
             </Title>
-            <Text paddingRight="0px" marginTop="0px">
+            <Text paddingRight="0px" marginTop="0px" fontSize='16px'>
               Population: {cityInfo.population} inhabitants
               <br />
               Growth/3 yrs: {cityInfo.growth_from_2000_to_2013}
