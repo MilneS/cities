@@ -13,6 +13,7 @@ export const Container = styled.div`
   font-weight: 500;
   width:${(props) => (props.width ? props.width : "")};
   position: ${(props) => (props.position ? props.position : "static")};
+  border:1px solid red;
 `;
 
 export const Title = styled.h1`
@@ -20,6 +21,9 @@ export const Title = styled.h1`
   color: rgb(95, 105, 196);
   font-weight: bold;
   margin-top: ${(props) => (props.marginTop ? props.marginTop : "0px")};
+  @media(max-width:768px){
+    font-size: 20px;
+  }
 `;
 
 export const Text = styled.p`
@@ -31,10 +35,16 @@ export const Text = styled.p`
   align-items: flex-end;
   justify-content: flex-end;
   width: ${(props) => (props.width? props.width : 'fit-content')};
+  @media(max-width:768px){
+    font-size: 10px;
+  }
 `;
 
 export const Label = styled.label`
   font-size: 20px;
+  @media(max-width:768px){
+    font-size: 16px;
+  }
 `;
 
 export const Select = styled.select`
@@ -48,4 +58,7 @@ export const Select = styled.select`
   padding-left: 5px;
   padding-right: 5px;
   outline: none;
+  @media(max-width:768px){
+    font-size: 16px;
+  }
 `;
