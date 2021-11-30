@@ -16,7 +16,6 @@ export const Container = styled.div`
   @media(max-width:425px){
     margin: ${(props) => (props.marginSmall ? props.marginSmall : "0px")};
     height: ${(props) => props.heightSmall};
-
   }
 `;
 
