@@ -13,7 +13,11 @@ export const Container = styled.div`
   font-weight: 500;
   width:${(props) => (props.width ? props.width : "")};
   position: ${(props) => (props.position ? props.position : "static")};
-  border:1px solid red;
+  @media(max-width:425px){
+    margin: ${(props) => (props.marginSmall ? props.marginSmall : "0px")};
+    height: ${(props) => props.heightSmall};
+
+  }
 `;
 
 export const Title = styled.h1`
@@ -36,7 +40,7 @@ export const Text = styled.p`
   justify-content: flex-end;
   width: ${(props) => (props.width? props.width : 'fit-content')};
   @media(max-width:768px){
-    font-size: ${(props) => (props.fontSize? props.fontSize : '10px')};
+    font-size: ${(props) => (props.fontSizeSmall? props.fontSizeSmall : '10px')};
   }
 `;
 
@@ -44,6 +48,9 @@ export const Label = styled.label`
   font-size: 20px;
   @media(max-width:768px){
     font-size: 16px;
+  }
+  @media(max-width:320px){
+    font-size: ${(props) => (props.fontSizeSmall? props.fontSizeSmall : '10px')};
   }
 `;
 
@@ -60,5 +67,8 @@ export const Select = styled.select`
   outline: none;
   @media(max-width:768px){
     font-size: 16px;
+  }
+  @media(max-width:320px){
+    font-size: ${(props) => (props.fontSizeSmall? props.fontSizeSmall : '10px')};
   }
 `;
