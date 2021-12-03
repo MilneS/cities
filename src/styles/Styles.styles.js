@@ -29,6 +29,11 @@ export const Title = styled.h1`
   }
 `;
 
+export const MapContainer = styled.div`
+  height: 100%;
+  width:100%;
+`;
+
 export const Text = styled.p`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "20px")};
   line-height: 40px;
@@ -71,3 +76,4 @@ export const Select = styled.select`
     font-size: ${(props) => (props.fontSizeSmall? props.fontSizeSmall : '10px')};
   }
 `;
+

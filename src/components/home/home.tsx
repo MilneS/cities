@@ -1,6 +1,7 @@
 import {
   Container,
   Title,
+  MapContainer,
   Text,
   Select,
   Label,
@@ -9,7 +10,6 @@ import "../../index.css";
 import { cities } from "../../assets/cities";
 import { useState, useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
-import { Interface } from "readline";
 
 const Home = () => {
   interface CityItem {
@@ -115,7 +115,7 @@ const Home = () => {
         <Title>U.S. cities</Title>
       </Container>
       <Container height="450px" heightSmall='350px'>
-        <div ref={mapContainer} className="map-container" />
+        <MapContainer ref={mapContainer} />
       </Container>
       <Container width="100%" position="absolute">
         <Text width="98%" fontSize="12px" marginTop="0px" paddingLeft="30px">

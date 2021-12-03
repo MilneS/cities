@@ -12,10 +12,6 @@ code {
     monospace;
 }
 
-.map-container {
-  height: 100%;
-  width:100%;
-}
 .popup > :nth-of-type(2) {
   padding: 10px;
 }
